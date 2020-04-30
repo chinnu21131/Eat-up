@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div class="Cafeteria-header"  >
+      <img class="Cafeteria-logo" src="logo.png">
+        <h1 class="Cafeteria-title ">Welcome to EAT'UP Cafeteria</h1>
+      <hr class="Cafeteria-header-line">
+  </div>
+    <% if flash[:error] %>
+      <p class="Flash-error"> <%= flash[:error]%></p>
+    <% end %>
+  <div class="Cafeteria" >
+
+      <%= yield %>
+  </div>
+
+
   </body>
 </html>
