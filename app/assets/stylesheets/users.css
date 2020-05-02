@@ -40,27 +40,28 @@ border-radius: 10px;
   color: white;
   padding: 8px 15px;
   border-radius: 4px;
+  border: none;
 }
 .Gender-options {
   display: flex;
 }
 .Account{
   background-color: antiquewhite;
+  margin: 80px 500px;
+  padding: 30px;
+  border-radius: 18px;
 }
-.Account-header {
-  font-size: 32px;
-  line-height: 1.6;
-  margin: 30px 90px;
 
-}
 
 .Details-label {
   display: inline-block;
   width: 150px;
+  color: #783535;
+  font-weight: bold;
 }
 
 .Details-item {
-  display: flex;
+
   margin-bottom: 20px;
   color: black;
 }

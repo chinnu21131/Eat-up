@@ -10,9 +10,9 @@ class MenuItemsController < ApplicationController
     redirect_to "/menu/new"
   end
 
-  def create1
-    id = params[:menu_no]
-    MenuItem.no = id
-    redirect_to "/menu_items/new"
-  end
+  # def create1
+  #  id = params[:menu_no]
+  # MenuItem.no = id
+  #redirect_to "/menu_items/new"
+  #end ---work on dynamic combo box
 end

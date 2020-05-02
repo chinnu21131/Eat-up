@@ -1,7 +1,6 @@
 class Menu < ActiveRecord::Base
   has_many :menu_items
-  class << self; attr_accessor :j end
-  @j = 12
+
   def self.menu
     menus = Array.new
     Menu.all.each do |menu|
@@ -16,11 +15,5 @@ class Menu < ActiveRecord::Base
       @active_menus.push(menu)
     end
     @active_menus
-  end
-  def self.item(i)
-    @j = i
-  end
-  def self.no
-    @j
   end
 end

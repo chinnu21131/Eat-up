@@ -10,7 +10,7 @@
 .OrderCart th {
   border:1px solid #C0C0C0;
   padding:5px;
-  background: lightskyblue;
+  background: rgb(165, 208, 235);
   font-size: 20px;
 
 font-weight: bold;
@@ -23,13 +23,15 @@ font-weight: bold;
 .OrderButton{
   background-color: forestgreen;
   color: white;
-  padding: 8px 15px;
+  margin-left: 1050px;
+  border: none;
+  padding: 14px 20px;
   border-radius: 4px;
 }
 .OrderDetails{
   display: flex;
-  margin: 50px ;
-  padding: 15px;
+  margin: 50px 500px;
+padding: 10px;
   align-items: baseline;
 }
 .OrderType{

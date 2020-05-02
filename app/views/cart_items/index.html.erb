@@ -1,24 +1,7 @@
- <div class="MenuBar">
-<%= render partial: "form-section" ,locals:{form_action: "/menu" ,form_value: "Menus",form_method: "GET" }%>
-<form method="get" action="/users/1" method="GET">
-    <button class="MenuBar-button" type="submit">My account </button>
-</form>
-<p class="User-credentials"> Hello! User </p>
-<form method="get" action="/cart_items" method="GET">
-    <button  class="MenuBar-button" type="submit">View Cart</button>
-</form>
-<%= render partial: "form-section" ,locals:{  form_action: "/order" , form_value: "My Orders",form_method: "GET" }%>
-
-<%= render partial: "form-section" ,locals:{  form_action: "/signout" ,form_value: "SignOut", form_method: "Delete" }%>
-</div>
-
+<% amount=0 %>
 <div class="Menus">
-
-
-<hr class="Cafeteria-header-line">
+	<hr class="Cafeteria-header-line">
   <h1 class="MenuPageTitle">Cart</h1>
-
-
 </div>
 
 
@@ -35,22 +18,29 @@
 
 	</thead>
 	<tbody>
-	<% CartItem.all.each_with_index do |cart_item,i|%>
+
+	<% @cart_item.each_with_index do |cart_item,i|%>
 	<tr>
 		<td><%= i+1	 %> </td>
 		<td> <%= cart_item.cart_item%> </td>
 		<td> <%= cart_item.cart_item_price%> </td>
 		<td> <%= cart_item.item_quantity %> </td>
-		<td> <%= cart_item.item_quantity * cart_item.cart_item_price %> </td>
+<%	total =cart_item.item_quantity * cart_item.cart_item_price %>
+<% amount+=total%>
+		<td> <%=total%> </td>
 		<td>
 				<%= link_to "remove", "/cart_items/#{cart_item.id}" ,method: "delete" %>
 		</td>
 	</tr>
+
 	<% end %>
+
 	</tbody>
+
 </table>
-<h2 class="OrderDetails-title">Amount:</h2>
-<p><%= CartItem.amount %></p>
+	<%= form_with(url: "/order", method: "post") do%>
+ <input type="hidden" name="amount" value= "<%= amount %>" />
+
 <section class="OrderDetails">
   <div class="OrderType">
   	<h2 class="OrderDetails-title">Select Order Type:</h2>
@@ -60,9 +50,7 @@
    		 <option value="EatUp Wallet">Delivery</option>
  		 </select>
  	 </div>
-	<form  action= "/order" method="POST">
-          <input  class="OrderButton" type="submit" value="Place Order" >
-</form>
-
+<h2 >SUBTOTAL: <%= amount%></h2>
 </section>
-<img src="order.png" alt="Order" class="OrderBanner">
+<input  class="OrderButton button1" type="submit" value="Confirm Order" >
+<% end %>
