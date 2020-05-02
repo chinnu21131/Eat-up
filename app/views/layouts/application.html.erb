@@ -4,7 +4,6 @@
     <title>Cafeteria</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,29 +11,24 @@
   <body>
   <div class="Cafeteria-header"  >
       <img class="Cafeteria-logo" src="logo.png">
-        <h1 class="Cafeteria-title ">Welcome to EAT'UP Cafeteria</h1>
+      <h1 class="Cafeteria-title ">Welcome to EAT'UP Cafeteria</h1>
       <hr class="Cafeteria-header-line">
   </div>
-    <% if flash[:error] %>
-      <p class="Flash-error"> <%= flash[:error]%></p>
-    <% end %>
-
+  <% if flash[:error] %>
+    <p class="Flash-error"> <%= flash[:error]%></p>
+  <% end %>
   <div class="Cafeteria" >
   <%if @current_user%>
-  <div class="MenuBar">
-
-<%= link_to "Menus","/menu",method: "get",class: "MenuBar-button"%>
-<%= link_to "My account","/users/#{@current_user.id}",method: "get",class: "MenuBar-button"%>
-<p class="User-credentials"> Hello <%= @current_user.first_name%>!</p>
-<%= link_to "View Cart","/cart_items",method: "get",class: "MenuBar-button"%>
-<%= link_to "My Orders","/order",method: "get",class: "MenuBar-button"%>
-<%= link_to "Sign-out",destroy_session_path,method: "delete",class: "MenuBar-button"%>
-
-</div>
-   <%end%>
+    <div class="MenuBar">
+    <%= link_to "Menus","/menu",method: "get",class: "MenuBar-button"%>
+    <%= link_to "My account","/users/#{@current_user.id}",method: "get",class: "MenuBar-button"%>
+    <p class="User-credentials"> Hello <%= @current_user.first_name%>!</p>
+    <%= link_to "View Cart","/cart_items",method: "get",class: "MenuBar-button"%>
+    <%= link_to "My Orders","/order",method: "get",class: "MenuBar-button"%>
+    <%= link_to "Sign-out",destroy_session_path,method: "delete",class: "MenuBar-button"%>
+    </div>
+  <%end%>
       <%= yield %>
   </div>
-
-
   </body>
 </html>

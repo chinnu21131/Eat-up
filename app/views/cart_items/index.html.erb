@@ -3,44 +3,36 @@
 	<hr class="Cafeteria-header-line">
   <h1 class="MenuPageTitle">Cart</h1>
 </div>
-
-
 <table class="OrderCart">
 	<thead>
-	<tr>
-		<th>S No.</th>
-		<th>Items</th>
-		<th>Price</th>
-		<th>Quantity</th>
-		<th>Total</th>
-		<th>action</th>
-	</tr>
-
+		<tr>
+			<th>S No.</th>
+			<th>Items</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+			<th>action</th>
+		</tr>
 	</thead>
 	<tbody>
-
 	<% @cart_item.each_with_index do |cart_item,i|%>
-	<tr>
-		<td><%= i+1	 %> </td>
-		<td> <%= cart_item.cart_item%> </td>
-		<td> <%= cart_item.cart_item_price%> </td>
-		<td> <%= cart_item.item_quantity %> </td>
-<%	total =cart_item.item_quantity * cart_item.cart_item_price %>
-<% amount+=total%>
-		<td> <%=total%> </td>
-		<td>
+		<tr>
+			<td><%= i+1	 %> </td>
+			<td> <%= cart_item.cart_item%> </td>
+			<td> <%= cart_item.cart_item_price%> </td>
+			<td> <%= cart_item.item_quantity %> </td>
+			<% total =cart_item.item_quantity * cart_item.cart_item_price %>
+			<% amount+=total%>
+			<td> <%=total%> </td>
+			<td>
 				<%= link_to "remove", "/cart_items/#{cart_item.id}" ,method: "delete" %>
-		</td>
-	</tr>
-
+			</td>
+		</tr>
 	<% end %>
-
 	</tbody>
-
 </table>
-	<%= form_with(url: "/order", method: "post") do%>
- <input type="hidden" name="amount" value= "<%= amount %>" />
-
+<%= form_with(url: "/order", method: "post") do%>
+<input type="hidden" name="amount" value= "<%= amount %>" />
 <section class="OrderDetails">
   <div class="OrderType">
   	<h2 class="OrderDetails-title">Select Order Type:</h2>
